@@ -1,4 +1,7 @@
-public enum EEnemyStateType
+public enum EnemyStateType
 {
-    
+    Idle,
+    Patrol,
+    Chase,
+    Attack
 }
