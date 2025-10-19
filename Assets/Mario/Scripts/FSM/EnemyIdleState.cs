@@ -31,16 +31,20 @@ public class EnemyIdleState : BaseState<EnemyStateType> //Every state inherits f
     //In this method we will setup stuff of how to change state from idle to others.
     public override EnemyStateType GetNextState()
     {
-        float dist = Vector2.Distance(manager.transform.position, manager.player.position);
+        RaycastHit2D Raycast = Physics2D.Raycast(new Vector2(manager.groundCheck.position.x, manager.groundCheck.position.y + 0.4f)
+         , manager.transform.right, manager.detectionRange);
+        Debug.DrawRay(manager.transform.position, manager.transform.right * manager.detectionRange, Color.red);
+        if (Raycast.collider != null)
+        {
+            Debug.Log("Ray hit: " + Raycast.collider.name);
+            if (Raycast.collider.tag == "Player")
+            {
+                return EnemyStateType.Chase;
+            }
+        }
 
-        // if (dist < manager.attackRange)
-        //     return EnemyStateType.Attack;
-
-        if (dist < manager.detectionRange)
-            return EnemyStateType.Chase;
-
-        // if (idleTimer <= 0)
-        //     return EnemyStateType.Patrol;
+        if (idleTimer <= 0)
+            return EnemyStateType.Patrol;
 
         return stateKey; // stay idle
     }

@@ -24,9 +24,28 @@ public class EnemyChaseState : BaseState<EnemyStateType>
 
     public override EnemyStateType GetNextState()
     {
+        RaycastHit2D RaycastRight = Physics2D.Raycast(new Vector2(manager.groundCheck.position.x, manager.groundCheck.position.y + 0.4f)
+        , manager.transform.right, manager.detectionRange);
+        RaycastHit2D RaycastLeft = Physics2D.Raycast(new Vector2(manager.groundCheck.position.x, manager.groundCheck.position.y + 0.4f)
+         , -manager.transform.right, manager.detectionRange);
+
+        Debug.DrawRay(manager.transform.position, manager.transform.right * manager.detectionRange, Color.red);
+        Debug.DrawRay(manager.transform.position, -manager.transform.right * manager.detectionRange, Color.blue);
+
+        if (RaycastRight.collider != null && RaycastRight.collider.tag == "Player")
+        {
+            return stateKey; //return chase
+        }
+        else if (RaycastLeft.collider != null && RaycastLeft.collider.tag == "Player")
+        {
+            return stateKey;
+        }
+            
+            
+
         float dist = Vector2.Distance(manager.transform.position, manager.player.position);
 
-        if(dist < 1) { Debug.Log("Attack"); return EnemyStateType.Idle; }
+        if (dist < 1) { Debug.Log("Attack"); return EnemyStateType.Idle; }
         // if (dist < manager.attackRange)
         //     return EnemyStateType.Attack;
 
