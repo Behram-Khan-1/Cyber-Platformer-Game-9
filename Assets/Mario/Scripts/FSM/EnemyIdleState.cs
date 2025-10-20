@@ -13,8 +13,10 @@ public class EnemyIdleState : BaseState<EnemyStateType> //Every state inherits f
     //Below is implementation of Idle state amnd its methods
     public override void EnterState()
     {
-        idleTimer = 2f;
         Debug.Log("Entered Idle");
+        manager.ActiveState = EnemyStateType.Idle;
+        idleTimer = 1.2f;
+        manager.animator.SetBool("IsRunning", false);
     }
 
     public override void UpdateState()
@@ -31,17 +33,19 @@ public class EnemyIdleState : BaseState<EnemyStateType> //Every state inherits f
     //In this method we will setup stuff of how to change state from idle to others.
     public override EnemyStateType GetNextState()
     {
-        RaycastHit2D Raycast = Physics2D.Raycast(new Vector2(manager.groundCheck.position.x, manager.groundCheck.position.y + 0.4f)
-         , manager.transform.right, manager.detectionRange);
-        Debug.DrawRay(manager.transform.position, manager.transform.right * manager.detectionRange, Color.red);
-        if (Raycast.collider != null)
+
+        if (manager.lineOfSight.IsFacingPlayer())
         {
-            Debug.Log("Ray hit: " + Raycast.collider.name);
-            if (Raycast.collider.tag == "Player")
-            {
+            if (manager.lineOfSight.CanSeePlayer())
+            
                 return EnemyStateType.Chase;
-            }
         }
+        if (manager.lineOfSight.IsPlayerInAttackRange(manager.attackRange))
+        {
+                return EnemyStateType.Attack;
+        }
+
+
 
         if (idleTimer <= 0)
             return EnemyStateType.Patrol;
@@ -49,18 +53,4 @@ public class EnemyIdleState : BaseState<EnemyStateType> //Every state inherits f
         return stateKey; // stay idle
     }
 
-    public override void OnTriggerEnter()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void OnTriggerExit()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void OnTriggerStay()
-    {
-        throw new System.NotImplementedException();
-    }
 }

@@ -16,7 +16,9 @@ public class EnemyPatrolState : BaseState<EnemyStateType>
     public override void EnterState()
     {
         Debug.Log("Patrolling");
+        manager.ActiveState = EnemyStateType.Patrol;
         directionChanged = false;
+        manager.animator.SetBool("IsRunning", true);
         FlipDirection();
     }
 
@@ -55,17 +57,13 @@ public class EnemyPatrolState : BaseState<EnemyStateType>
     }
     public override EnemyStateType GetNextState()
     {
-        RaycastHit2D Raycast = Physics2D.Raycast(new Vector2(manager.groundCheck.position.x, manager.groundCheck.position.y + 0.4f)
-         , manager.transform.right, manager.detectionRange);
-        Debug.DrawRay(manager.transform.position, manager.transform.right * manager.detectionRange, Color.red);
-        if (Raycast.collider != null)
+
+        if (manager.lineOfSight.IsFacingPlayer())
         {
-            Debug.Log("Ray hit: " + Raycast.collider.name);
-            if (Raycast.collider.tag == "Player")
-            {
+            if (manager.lineOfSight.CanSeePlayer())
                 return EnemyStateType.Chase;
-            }
         }
+
 
         if (directionChanged == true)
         {
@@ -75,21 +73,5 @@ public class EnemyPatrolState : BaseState<EnemyStateType>
     }
 
 
-
-
-    public override void OnTriggerEnter()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void OnTriggerExit()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void OnTriggerStay()
-    {
-        throw new System.NotImplementedException();
-    }
 
 }

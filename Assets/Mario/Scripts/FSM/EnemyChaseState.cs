@@ -11,62 +11,39 @@ public class EnemyChaseState : BaseState<EnemyStateType>
 
     public override void EnterState()
     {
+        manager.ActiveState = EnemyStateType.Chase;
+        manager.animator.SetBool("IsRunning", true);
         Debug.Log("Chasing player");
     }
 
     public override void UpdateState()
     {
+        //Enemy Moveing to player
         Vector2 dir = (manager.player.position - manager.transform.position).normalized;
         manager.transform.position += (Vector3)dir * 2f * Time.deltaTime; // move speed
     }
 
-    public override void ExitState() { }
+    public override void ExitState()
+    {
+        manager.animator.SetBool("IsRunning", false);
+    }
 
     public override EnemyStateType GetNextState()
     {
-        RaycastHit2D RaycastRight = Physics2D.Raycast(new Vector2(manager.groundCheck.position.x, manager.groundCheck.position.y + 0.4f)
-        , manager.transform.right, manager.detectionRange);
-        RaycastHit2D RaycastLeft = Physics2D.Raycast(new Vector2(manager.groundCheck.position.x, manager.groundCheck.position.y + 0.4f)
-         , -manager.transform.right, manager.detectionRange);
-
-        Debug.DrawRay(manager.transform.position, manager.transform.right * manager.detectionRange, Color.red);
-        Debug.DrawRay(manager.transform.position, -manager.transform.right * manager.detectionRange, Color.blue);
-
-        if (RaycastRight.collider != null && RaycastRight.collider.tag == "Player")
+        if (manager.lineOfSight.IsPlayerInAttackRange(manager.attackRange))
         {
-            return stateKey; //return chase
+            return EnemyStateType.Attack;
         }
-        else if (RaycastLeft.collider != null && RaycastLeft.collider.tag == "Player")
+
+        if (manager.lineOfSight.CanSeePlayer())
+        { return EnemyStateType.Chase; }
+        else
         {
-            return stateKey;
+            return EnemyStateType.Idle;
         }
-            
-            
 
-        float dist = Vector2.Distance(manager.transform.position, manager.player.position);
 
-        if (dist < 1) { Debug.Log("Attack"); return EnemyStateType.Idle; }
-        // if (dist < manager.attackRange)
-        //     return EnemyStateType.Attack;
-
-        // if (dist > manager.detectionRange)
-        //     return EnemyStateType.Patrol;
-
-        return stateKey;
     }
 
-    public override void OnTriggerEnter()
-    {
-        throw new System.NotImplementedException();
-    }
 
-    public override void OnTriggerExit()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void OnTriggerStay()
-    {
-        throw new System.NotImplementedException();
-    }
 }

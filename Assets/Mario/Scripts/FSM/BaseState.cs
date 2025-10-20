@@ -16,8 +16,8 @@ public abstract class BaseState<EState> where EState : Enum //We use EnemyStateT
 
     public abstract EState GetNextState();
 
-    public abstract void OnTriggerEnter();
-    public abstract void OnTriggerExit();
-    public abstract void OnTriggerStay();
+    // public abstract void OnTriggerEnter();
+    // public abstract void OnTriggerExit();
+    // public abstract void OnTriggerStay();
 
 }

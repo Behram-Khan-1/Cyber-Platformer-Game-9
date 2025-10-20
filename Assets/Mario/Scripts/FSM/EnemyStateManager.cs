@@ -6,15 +6,25 @@ public class EnemyStateManager : StateManagerr<EnemyStateType> // Inherits from 
     [Header("Enemy Basics")]
     public Transform player;
     public Rigidbody2D rb;
-    public Animator animator;
-    
+
+    public EnemyStateType ActiveState;
+
     [Header("AI Settings")]
+    public EnemyLineOfSight lineOfSight;
     public float detectionRange = 5f;
+    public float attackRange = 1f;
+    public float attackCooldown = 1f;
     public float patrolSpeed;
     public Transform groundCheck;
     public LayerMask groundLayer;
+    public LayerMask enemyLayer;
+
+    [Header("Animation")]
+    public bool isAttacking;
+    public Animator animator;
     void Awake()
     {
+        lineOfSight = new EnemyLineOfSight(this);
         // Add all states to the dictionary
         //Register dictionary idle state with EnemyIdleState class
         //and EnemyIdleState with Idle key and this manager as its manager
@@ -23,7 +33,7 @@ public class EnemyStateManager : StateManagerr<EnemyStateType> // Inherits from 
         states[EnemyStateType.Patrol] = new EnemyPatrolState(EnemyStateType.Patrol, this);
 
         states[EnemyStateType.Chase] = new EnemyChaseState(EnemyStateType.Chase, this);
-        // states[EnemyStateType.Attack] = new EnemyAttackState(EnemyStateType.Attack, this);
+        states[EnemyStateType.Attack] = new EnemyAttackState(EnemyStateType.Attack, this);
 
         currentState = states[EnemyStateType.Idle];
     }
