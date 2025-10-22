@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3400336951349464445}
   - component: {fileID: 5950091389145945541}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 971272691252236938}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,7 +135,8 @@ GameObject:
   - component: {fileID: 9194845131183970069}
   - component: {fileID: 8103815232304501935}
   - component: {fileID: 6186889702278849207}
-  m_Layer: 0
+  - component: {fileID: 8358053570866110272}
+  m_Layer: 8
   m_Name: PlayerRoot
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -338,6 +339,21 @@ MonoBehaviour:
   attackCooldown: 0.4
   comboResetDelay: 0.3
   attackTimer: 0
+--- !u!114 &8358053570866110272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5294621066785423593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6664e4d1c286384091c3cb8c50ac5d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isParrying: 0
+  parryWindow: 0.5
+  parryCooldown: 1.5
 --- !u!1 &6919710336642826981
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,7 +366,7 @@ GameObject:
   - component: {fileID: 3892151704996506005}
   - component: {fileID: 1957437434473724247}
   m_Layer: 0
-  m_Name: AttackCollider
+  m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -433,7 +449,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6919710336642826981}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}

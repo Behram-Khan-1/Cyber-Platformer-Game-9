@@ -42,7 +42,7 @@ public class CharacterAttack : MonoBehaviour
 
     private void OnAttack()
     {
-        Debug.Log("Player Attacked");
+        // Debug.Log("Player Attacked");
         numberOfClicks++;
         numberOfClicks = Mathf.Clamp(numberOfClicks, 1, 2);
 

@@ -13,7 +13,7 @@ public class EnemyIdleState : BaseState<EnemyStateType> //Every state inherits f
     //Below is implementation of Idle state amnd its methods
     public override void EnterState()
     {
-        Debug.Log("Entered Idle");
+        // Debug.Log("Entered Idle");
         manager.ActiveState = EnemyStateType.Idle;
         idleTimer = 1.2f;
         manager.animator.SetBool("IsRunning", false);
@@ -27,7 +27,7 @@ public class EnemyIdleState : BaseState<EnemyStateType> //Every state inherits f
 
     public override void ExitState()
     {
-        Debug.Log("Exited Idle");
+        // Debug.Log("Exited Idle");
     }
 
     //In this method we will setup stuff of how to change state from idle to others.

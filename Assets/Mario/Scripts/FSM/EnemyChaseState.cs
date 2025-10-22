@@ -13,7 +13,7 @@ public class EnemyChaseState : BaseState<EnemyStateType>
     {
         manager.ActiveState = EnemyStateType.Chase;
         manager.animator.SetBool("IsRunning", true);
-        Debug.Log("Chasing player");
+        // Debug.Log("Chasing player");
     }
 
     public override void UpdateState()

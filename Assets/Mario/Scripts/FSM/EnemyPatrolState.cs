@@ -53,7 +53,7 @@ public class EnemyPatrolState : BaseState<EnemyStateType>
     }
     public override void ExitState()
     {
-        Debug.Log("Exiting Enemy Patrol State");
+        // Debug.Log("Exiting Enemy Patrol State");
     }
     public override EnemyStateType GetNextState()
     {

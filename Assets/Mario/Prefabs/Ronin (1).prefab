@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8549598747342742676}
   - component: {fileID: 1074374648270191128}
   - component: {fileID: 2702345317388611871}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: SwordCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

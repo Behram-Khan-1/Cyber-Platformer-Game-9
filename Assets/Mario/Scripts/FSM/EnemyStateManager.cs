@@ -38,7 +38,10 @@ public class EnemyStateManager : StateManagerr<EnemyStateType> // Inherits from 
         states[EnemyStateType.Patrol] = new EnemyPatrolState(EnemyStateType.Patrol, this);
 
         states[EnemyStateType.Chase] = new EnemyChaseState(EnemyStateType.Chase, this);
+
         states[EnemyStateType.Attack] = new EnemyAttackState(EnemyStateType.Attack, this);
+        
+        states[EnemyStateType.Parried] = new EnemyParriedState(EnemyStateType.Parried, this);
 
         currentState = states[EnemyStateType.Idle];
     }

@@ -27261,10 +27261,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1957437434473724247, guid: b42a8c45591c76845a5884dc25c5838b, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4298525340092760156, guid: b42a8c45591c76845a5884dc25c5838b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 219.5
@@ -27309,9 +27305,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerRoot
       objectReference: {fileID: 0}
-    - target: {fileID: 6919710336642826981, guid: b42a8c45591c76845a5884dc25c5838b, type: 3}
-      propertyPath: m_Name
-      value: Square
+    - target: {fileID: 8358053570866110272, guid: b42a8c45591c76845a5884dc25c5838b, type: 3}
+      propertyPath: parryWindow
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8358053570866110272, guid: b42a8c45591c76845a5884dc25c5838b, type: 3}
+      propertyPath: StunDuration
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
