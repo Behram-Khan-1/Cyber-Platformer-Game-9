@@ -354,6 +354,9 @@ MonoBehaviour:
   isParrying: 0
   parryWindow: 0.5
   parryCooldown: 1.5
+  StunDuration: 1
+  parryResetTimer: 0
+  parryTimer: 0
 --- !u!1 &6919710336642826981
 GameObject:
   m_ObjectHideFlags: 0

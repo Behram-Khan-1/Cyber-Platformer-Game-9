@@ -27,10 +27,6 @@ public class EnemyChaseState : BaseState<EnemyStateType>
        manager.lineOfSight.TurnEnemyToPlayer();
     }
 
-    void FlipDirection()
-    {
-        manager.transform.right = -manager.transform.right;
-    }
     public override void ExitState()
     {
         manager.animator.SetBool("IsRunning", false);

@@ -19,7 +19,7 @@ public class EnemyPatrolState : BaseState<EnemyStateType>
         manager.ActiveState = EnemyStateType.Patrol;
         directionChanged = false;
         manager.animator.SetBool("IsRunning", true);
-        FlipDirection();
+        manager.lineOfSight.FlipDirection();
     }
 
 
@@ -34,16 +34,12 @@ public class EnemyPatrolState : BaseState<EnemyStateType>
             directionChanged = true;
         }
     }
-    void FlipDirection()
-    {
-        manager.transform.right = -manager.transform.right;
-    }
+
 
     bool CanMoveNext()
     {
         bool groundHit = Physics2D.Raycast(manager.groundCheck.position, Vector2.down, 0.3f, manager.groundLayer);
-        Debug.DrawRay(manager.groundCheck.position, Vector2.down * 0.5f, Color.red);
-        // bool wallHit = Physics2D.Raycast(manager.transform.position, manager.transform.right, 0.3f, manager.groundLayer);
+        Debug.DrawRay(manager.groundCheck.position, Vector2.down * 0.3f, Color.red);
         if (groundHit)
         {
             return true;

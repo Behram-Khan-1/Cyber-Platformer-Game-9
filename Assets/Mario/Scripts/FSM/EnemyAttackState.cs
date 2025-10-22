@@ -55,7 +55,7 @@ public class EnemyAttackState : BaseState<EnemyStateType>
         {
             return EnemyStateType.Chase;
         }
-        Debug.Log("Is Stunned: " + isStunned);
+        // Debug.Log("Is Stunned: " + isStunned);
         if (isStunned == true)
         {
             Debug.Log("Stunned");

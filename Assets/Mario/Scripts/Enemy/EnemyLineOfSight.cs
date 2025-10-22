@@ -54,7 +54,7 @@ public class EnemyLineOfSight
             }
         }
     }
-    void FlipDirection()
+    public void FlipDirection()
     {
         manager.transform.right = -manager.transform.right;
     }
