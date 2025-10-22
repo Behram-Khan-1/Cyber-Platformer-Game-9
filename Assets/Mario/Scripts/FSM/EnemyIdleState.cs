@@ -53,4 +53,8 @@ public class EnemyIdleState : BaseState<EnemyStateType> //Every state inherits f
         return stateKey; // stay idle
     }
 
+    public override void OnTriggerEnter(Collider2D collision)
+    {
+        throw new System.NotImplementedException();
+    }
 }

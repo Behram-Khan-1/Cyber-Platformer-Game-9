@@ -1,5 +1,6 @@
 
 using System;
+using UnityEngine;
 
 public abstract class BaseState<EState> where EState : Enum //We use EnemyStateType Enum here
 {
@@ -16,8 +17,8 @@ public abstract class BaseState<EState> where EState : Enum //We use EnemyStateT
 
     public abstract EState GetNextState();
 
-    // public abstract void OnTriggerEnter();
-    // public abstract void OnTriggerExit();
-    // public abstract void OnTriggerStay();
+    public abstract void OnTriggerEnter(Collider2D collision);
+    // public abstract void OnTriggerExit(Collider2D collision);
+    // public abstract void OnTriggerStay(Collider2D collision);
 
 }

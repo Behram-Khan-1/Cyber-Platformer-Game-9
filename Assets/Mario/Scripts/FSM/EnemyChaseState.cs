@@ -19,10 +19,18 @@ public class EnemyChaseState : BaseState<EnemyStateType>
     public override void UpdateState()
     {
         //Enemy Moveing to player
+        //Flip enemy if player is behind it
+
         Vector2 dir = (manager.player.position - manager.transform.position).normalized;
         manager.transform.position += (Vector3)dir * 2f * Time.deltaTime; // move speed
+
+       manager.lineOfSight.TurnEnemyToPlayer();
     }
 
+    void FlipDirection()
+    {
+        manager.transform.right = -manager.transform.right;
+    }
     public override void ExitState()
     {
         manager.animator.SetBool("IsRunning", false);
@@ -45,5 +53,8 @@ public class EnemyChaseState : BaseState<EnemyStateType>
 
     }
 
-
+    public override void OnTriggerEnter(Collider2D collision)
+    {
+        throw new System.NotImplementedException();
+    }
 }

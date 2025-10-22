@@ -72,6 +72,8 @@ public class EnemyPatrolState : BaseState<EnemyStateType>
         return stateKey;
     }
 
-
-
+    public override void OnTriggerEnter(Collider2D collision)
+    {
+        throw new System.NotImplementedException();
+    }
 }

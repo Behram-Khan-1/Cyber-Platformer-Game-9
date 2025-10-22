@@ -43,4 +43,25 @@ public class EnemyLineOfSight
     {
         return Vector2.Distance(manager.transform.position, manager.player.position) <= manager.attackRange;
     }
+
+    public void TurnEnemyToPlayer()
+    {
+        if (manager.lineOfSight.CanSeePlayer())
+        {
+            if (!manager.lineOfSight.IsFacingPlayer())
+            {
+                FlipDirection();
+            }
+        }
+    }
+    void FlipDirection()
+    {
+        manager.transform.right = -manager.transform.right;
+    }
+
+    // public void TurnEnemyToPlayer() 
+    // {
+    //     var playerDir = (manager.player.position - manager.transform.position).normalized;
+    //     manager.transform.right = playerDir;
+    // }
 }

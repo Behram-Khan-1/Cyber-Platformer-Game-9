@@ -3,11 +3,13 @@ using UnityEngine;
 public class CharacterCollider : MonoBehaviour
 {
     CharacterMovement controller;
+    CharacterBase characterBase;
     bool isOnPipe;
     bool isUsed;
     void Start()
     {
         controller = gameObject.GetComponent<CharacterMovement>();
+        characterBase = gameObject.GetComponent<CharacterBase>();
     }
 
     // Update is called once per frame
@@ -36,8 +38,16 @@ public class CharacterCollider : MonoBehaviour
             Debug.Log("Enter Pipe");
             collision.gameObject.GetComponent<Pipe>().EnterPipe(controller);
             isUsed = true;
-
         }
     }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.CompareTag("Enemy"))
+        {
+            collision.GetComponent<EnemyBase>().TakeDamage(characterBase.damage);
+        }
+    }
+
 }
 

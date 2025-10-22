@@ -18,6 +18,10 @@ public class CharacterAnimatorManager : MonoBehaviour
     {
         animator.SetTrigger(name);
     }
+    public void ResetTrigger(string name)
+    {
+        animator.ResetTrigger(name);
+    }
 
     public void SetFloat(string name, float value)
     {

@@ -43,5 +43,10 @@ public abstract class StateManagerr<Estate> : MonoBehaviour where Estate : Enum 
         IsTransitioningState = false; //state is not changing, now we can run UpdateState in update method 
     }
 
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        currentState.OnTriggerEnter(collision);
+    }
+
 
 }

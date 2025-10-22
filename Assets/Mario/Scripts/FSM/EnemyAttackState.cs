@@ -22,11 +22,12 @@ public class EnemyAttackState : BaseState<EnemyStateType>
         //Play Attack animation
         //attack the side player is on
         //if out of range, return to chase.
+        
         if (!manager.isAttacking)
         {
+            manager.lineOfSight.TurnEnemyToPlayer();
             manager.animator.SetBool("IsAttacking", false);
             attackCooldown = attackCooldown - Time.deltaTime;
-            Debug.Log(attackCooldown);
             if (attackCooldown <= 0)
             {
                 manager.isAttacking = true;
@@ -59,5 +60,13 @@ public class EnemyAttackState : BaseState<EnemyStateType>
         // }
         return stateKey;
 
+    }
+
+    public override void OnTriggerEnter(Collider2D collision)
+    {
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<CharacterBase>().DecreaseHealth(manager.attackDamage);
+        }
     }
 }

@@ -14,14 +14,19 @@ public class EnemyStateManager : StateManagerr<EnemyStateType> // Inherits from 
     public float detectionRange = 5f;
     public float attackRange = 1f;
     public float attackCooldown = 1f;
+    public int attackDamage = 5;
     public float patrolSpeed;
     public Transform groundCheck;
     public LayerMask groundLayer;
     public LayerMask enemyLayer;
 
+
     [Header("Animation")]
     public bool isAttacking;
     public Animator animator;
+
+
+
     void Awake()
     {
         lineOfSight = new EnemyLineOfSight(this);

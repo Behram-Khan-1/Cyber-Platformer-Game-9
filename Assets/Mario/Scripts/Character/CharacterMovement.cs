@@ -90,10 +90,8 @@ public class CharacterMovement : MonoBehaviour
         {
             LastXInput = inputX;
         }
-        if (LastXInput > 0)
-        { spriteRenderer.flipX = false; }
-        else if (LastXInput < 0)
-        { spriteRenderer.flipX = true; }
+
+        FlipFace();
 
         if (inputX != 0)
         {
@@ -114,6 +112,20 @@ public class CharacterMovement : MonoBehaviour
             rb.linearVelocity = new Vector2(inputX * horizontalSpeed, rb.linearVelocityY);
         }
 
+    }
+
+    private void FlipFace()
+    {
+        if (LastXInput > 0)
+        {
+            // spriteRenderer.flipX = false;
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+        else if (LastXInput < 0)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+            // spriteRenderer.flipX = true;
+        }
     }
 
     private void Jump()

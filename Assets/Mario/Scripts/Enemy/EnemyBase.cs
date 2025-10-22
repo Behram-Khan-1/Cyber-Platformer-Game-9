@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public class CharacterBase : MonoBehaviour
+public class EnemyBase : MonoBehaviour
 {
-    [SerializeField] private int money;
+    [SerializeField] public int health = 100;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -14,14 +14,13 @@ public class CharacterBase : MonoBehaviour
     {
 
     }
-
-    public void AddMoney(int amount)
+    
+    public void TakeDamage(int damageAmount)
     {
-        if (money >= 100)
-        { money = 100; }
-        else
+        health -= damageAmount;
+        if (health <= 0)
         {
-            money += amount;
+            Destroy(gameObject);
         }
     }
 }
