@@ -22,9 +22,6 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private float baseGravity = 2f;
     [SerializeField] private float maxFallSpeed = 18f;
     [SerializeField] private float fallSpeedmodifier = 2f;
-
-    public bool IsStopped = false;
-
     //Animation STUFF
     private CharacterAnimatorManager animator;
     private const string MOVE_X = "MoveX";
@@ -49,9 +46,10 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (IsStopped)
+        if (PauseManager.instance.isPlayerPaused)
         {
             rb.gravityScale = 0;
+            rb.linearVelocity = Vector2.zero;
             return;
         }
 

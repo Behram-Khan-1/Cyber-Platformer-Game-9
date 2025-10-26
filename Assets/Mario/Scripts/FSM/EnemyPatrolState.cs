@@ -15,7 +15,7 @@ public class EnemyPatrolState : BaseState<EnemyStateType>
 
     public override void EnterState()
     {
-        Debug.Log("Patrolling");
+        // Debug.Log("Patrolling");
         manager.ActiveState = EnemyStateType.Patrol;
         directionChanged = false;
         manager.animator.SetBool("IsRunning", true);
@@ -70,6 +70,6 @@ public class EnemyPatrolState : BaseState<EnemyStateType>
 
     public override void OnTriggerEnter(Collider2D collision)
     {
-        throw new System.NotImplementedException();
+        
     }
 }

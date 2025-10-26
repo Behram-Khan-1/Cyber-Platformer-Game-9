@@ -2,9 +2,15 @@ using UnityEngine;
 
 public class CharacterBase : MonoBehaviour
 {
-    [SerializeField] private int money;
-    [SerializeField] private int health = 100;
+    public static CharacterBase instance;
+    [SerializeField] public int money { get; private set; }
+    [SerializeField] public int health { get; private set; } = 100;
     [SerializeField] public int damage { get; private set; } = 50;
+
+    void Awake()
+    {
+        instance = this;
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

@@ -156,10 +156,10 @@ MonoBehaviour:
   rb: {fileID: 743000700949053776}
   ActiveState: 0
   detectionRange: 5
-  attackRange: 1
+  attackRange: 2
   attackCooldown: 1
-  attackDamage: 5
-  patrolSpeed: 2
+  attackDamage: 7
+  patrolSpeed: 3
   groundCheck: {fileID: 919021742930011625}
   groundLayer:
     serializedVersion: 2

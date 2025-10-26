@@ -16,8 +16,8 @@ TagManager:
   - Ground
   - Enemy
   - Player
-  - 
-  - 
+  - Background
+  - Interactable
   - 
   - 
   - 
@@ -40,6 +40,21 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: 1Background
+    uniqueID: 725278147
+    locked: 0
+  - name: 2Smoke
+    uniqueID: 2786992905
+    locked: 0
+  - name: 3Factory
+    uniqueID: 3866177967
+    locked: 0
+  - name: 4Factory
+    uniqueID: 730577823
+    locked: 0
+  - name: 5Factory
+    uniqueID: 1547417785
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

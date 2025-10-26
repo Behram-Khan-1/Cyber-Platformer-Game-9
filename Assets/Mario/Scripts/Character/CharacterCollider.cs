@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CharacterCollider : MonoBehaviour
 {
@@ -24,14 +25,25 @@ public class CharacterCollider : MonoBehaviour
             isOnPipe = false;
         }
 
-
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            TryInteract();
+        }
     }
 
-
+    void TryInteract()
+    {
+        var hit = Physics2D.OverlapCircle(transform.position, 2f, LayerMask.GetMask("Interactable"));
+        if (hit != null)
+        {
+            hit.GetComponent<IUsable>().Use();
+        }
+    }
 
 
     void OnCollisionStay2D(Collision2D collision)
     {
+
         // Debug.Log(collision.gameObject.name);
         if (collision.gameObject.tag == "Pipe" && isOnPipe && !isUsed)
         {
@@ -43,7 +55,7 @@ public class CharacterCollider : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy"))
         {
             collision.GetComponent<EnemyBase>().TakeDamage(characterBase.damage);
         }

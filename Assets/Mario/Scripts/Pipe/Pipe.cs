@@ -15,7 +15,7 @@ public class Pipe : MonoBehaviour
 
     private IEnumerator MoveThroughPipe(CharacterMovement player)
     {
-        player.IsStopped = true;
+        PauseManager.instance.TogglePause(true);
 
         int currentWaypointIndex = 0;
         player.transform.position = waypoints[currentWaypointIndex].position;
@@ -32,7 +32,7 @@ public class Pipe : MonoBehaviour
         player.transform.position = waypoints[currentWaypointIndex].position;
         yield return new WaitForSeconds(0.2f);
         player.ResetAfterPipeExit();
-        player.IsStopped = false;
+        PauseManager.instance.TogglePause(false);
         GetComponent<BoxCollider2D>().enabled = true;
     }
 }
