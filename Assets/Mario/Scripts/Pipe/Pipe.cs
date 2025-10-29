@@ -2,18 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pipe : MonoBehaviour
+public class Pipe : MonoBehaviour, IUsable
 {
     [SerializeField] private List<Transform> waypoints; //Transform waypoints
+    [SerializeField] private Transform parent; //Transform waypoints
     [SerializeField] private float speed = 3f; //Transform waypoints
+    CharacterMovement player;
 
-    public void EnterPipe(CharacterMovement player)
+    void Start()
     {
-        GetComponent<BoxCollider2D>().enabled = false;
-        StartCoroutine(MoveThroughPipe(player));
+        player = Transform.FindAnyObjectByType<CharacterMovement>();
+        if (player == null)
+        {
+            Debug.LogError("Player not found");
+        }
     }
 
-    private IEnumerator MoveThroughPipe(CharacterMovement player)
+    public void EnterPipe()
+    {
+        parent.GetComponent<BoxCollider2D>().enabled = false;
+        StartCoroutine(MoveThroughPipe());
+    }
+
+    private IEnumerator MoveThroughPipe()
     {
         PauseManager.instance.TogglePause(true);
 
@@ -34,5 +45,10 @@ public class Pipe : MonoBehaviour
         player.ResetAfterPipeExit();
         PauseManager.instance.TogglePause(false);
         GetComponent<BoxCollider2D>().enabled = true;
+    }
+
+    public void Use()
+    {
+        EnterPipe();
     }
 }

@@ -159,7 +159,7 @@ MonoBehaviour:
   attackRange: 2
   attackCooldown: 1
   attackDamage: 7
-  patrolSpeed: 3
+  patrolSpeed: 2.5
   groundCheck: {fileID: 919021742930011625}
   groundLayer:
     serializedVersion: 2
@@ -194,6 +194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  moneyPrefab: {fileID: 2577024920577778620, guid: ee04645737354194d8cf27ab36e581c0, type: 3}
 --- !u!50 &743000700949053776
 Rigidbody2D:
   serializedVersion: 5
@@ -208,7 +209,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDamping: 0
-  m_AngularDamping: 0.05
+  m_AngularDamping: 0
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -293,7 +294,7 @@ Transform:
   m_GameObject: {fileID: 8343096519880401381}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.994, y: -0.37, z: 0}
+  m_LocalPosition: {x: 1.34, y: -0.37, z: 0}
   m_LocalScale: {x: 0.3685, y: 0.2648, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

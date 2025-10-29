@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class StoryManager : MonoBehaviour
@@ -6,6 +7,11 @@ public class StoryManager : MonoBehaviour
     //TUTORIAL NPC AND Pipe
     public BoxCollider2D tutorialEndPipe;
     [SerializeField] Transform RatGate;
+    [SerializeField] Transform TutorialGate;
+    [SerializeField] Transform TrapRoomGate;
+
+
+
     void Awake()
     {
         instance = this;
@@ -22,13 +28,21 @@ public class StoryManager : MonoBehaviour
     {
 
     }
-    
+    public void OpenTutorialGate()
+    {
+        TutorialGate.gameObject.GetComponent<GateOpen>().PlayAnimation();
+    }
+
     public void EndTutorial()
     {
         tutorialEndPipe.enabled = true;
     }
     public void RatGateOpen()
     {
-        RatGate.gameObject.SetActive(false);
+        RatGate.gameObject.GetComponent<GateOpen>().PlayAnimation();
+    }
+    public void TrapRoomGateOpen()
+    {
+        TrapRoomGate.gameObject.GetComponent<GateOpen>().PlayAnimation();
     }
 }

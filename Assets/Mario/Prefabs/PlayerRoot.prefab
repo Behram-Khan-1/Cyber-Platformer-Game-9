@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 6474817916930609645, guid: 41d59e75639472544ae31a6d4c3bb02c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -283,7 +283,6 @@ MonoBehaviour:
   baseGravity: 2
   maxFallSpeed: 18
   fallSpeedmodifier: 2.5
-  IsStopped: 0
   LastXInput: 0
 --- !u!114 &2910115447286734877
 MonoBehaviour:
@@ -322,8 +321,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaa972f84a41da74da28e64b7c294948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  money: 0
-  health: 100
 --- !u!114 &6186889702278849207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -336,8 +333,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3968c1fa13c8ba943a7bc1a1c72ed58f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCooldown: 0.4
-  comboResetDelay: 0.3
+  attackCooldown: 0.45
+  comboResetDelay: 0.4
   attackTimer: 0
 --- !u!114 &8358053570866110272
 MonoBehaviour:

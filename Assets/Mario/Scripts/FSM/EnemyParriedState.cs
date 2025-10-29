@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyParriedState : BaseState<EnemyStateType>
+public class EnemyParriedState : BaseState<EnemyStateType> 
 {
     private EnemyStateManager manager;
     private float stunDuration;
@@ -14,6 +14,12 @@ public class EnemyParriedState : BaseState<EnemyStateType>
 
         manager.ActiveState = EnemyStateType.Parried;
         manager.animator.SetBool("IsParried", true);
+
+        // Notify the TutorialFightStateManager if it exists
+        if(manager is TutorialFightStateManager tutorialFightManager)
+        {
+            tutorialFightManager.RegisterParry();
+        }
     }
 
     public override void ExitState()

@@ -27,8 +27,9 @@ public class EnemyStateManager : StateManagerr<EnemyStateType> // Inherits from 
 
 
 
-    void Awake()
+    public void Awake()
     {
+        // Debug.Log("Awake() on Script called.");
         lineOfSight = new EnemyLineOfSight(this);
         // Add all states to the dictionary
         //Register dictionary idle state with EnemyIdleState class
@@ -40,9 +41,15 @@ public class EnemyStateManager : StateManagerr<EnemyStateType> // Inherits from 
         states[EnemyStateType.Chase] = new EnemyChaseState(EnemyStateType.Chase, this);
 
         states[EnemyStateType.Attack] = new EnemyAttackState(EnemyStateType.Attack, this);
-        
+
         states[EnemyStateType.Parried] = new EnemyParriedState(EnemyStateType.Parried, this);
+        states[EnemyStateType.Death] = new EnemyStateDeath(EnemyStateType.Death, this);
 
         currentState = states[EnemyStateType.Idle];
+    }
+    public void Die()
+    {
+        // Debug.Log("Manager Die Called");
+        TransitionToState(EnemyStateType.Death);
     }
 }

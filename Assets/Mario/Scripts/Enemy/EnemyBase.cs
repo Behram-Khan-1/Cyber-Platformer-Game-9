@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class EnemyBase : MonoBehaviour
 {
+
     [SerializeField] public int health = 100;
+    public Transform moneyPrefab;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -17,10 +19,16 @@ public class EnemyBase : MonoBehaviour
     
     public void TakeDamage(int damageAmount)
     {
+        if (gameObject.TryGetComponent<TutorialFightStateManager>(out TutorialFightStateManager tutorialManager))
+        {
+            tutorialManager.RegisterHit();
+        }
+        
+
         health -= damageAmount;
         if (health <= 0)
         {
-            Destroy(gameObject);
+            GetComponent<EnemyStateManager>().Die();
         }
     }
 }

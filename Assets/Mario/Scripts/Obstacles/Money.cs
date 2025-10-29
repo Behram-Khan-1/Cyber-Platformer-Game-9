@@ -12,4 +12,9 @@ public class Money : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public void SetMoneyValue(int value)
+    {
+        moneyValue = value;
+    }
 }

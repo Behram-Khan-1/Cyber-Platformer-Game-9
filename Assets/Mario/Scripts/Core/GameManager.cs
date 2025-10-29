@@ -17,6 +17,12 @@ public class GameManager : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    public void PlayerDied()
+    {
+        //Play Death Screen waitfor 3 seconds and respawn.
+        RespawnManager.instance.OnPlayerDeath();
+    }
     
 
 }

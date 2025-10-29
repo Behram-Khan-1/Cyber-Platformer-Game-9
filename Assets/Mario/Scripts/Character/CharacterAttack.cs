@@ -25,7 +25,7 @@ public class CharacterAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(PauseManager.instance.isPlayerPaused)
+        if (PauseManager.instance.isPlayerPaused)
         {
             return;
         }
@@ -36,6 +36,7 @@ public class CharacterAttack : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+
             if (attackTimer > 0)
             {
                 return;
@@ -48,7 +49,7 @@ public class CharacterAttack : MonoBehaviour
     {
         // Debug.Log("Player Attacked");
         numberOfClicks++;
-        numberOfClicks = Mathf.Clamp(numberOfClicks, 1, 2);
+        numberOfClicks = Mathf.Clamp(numberOfClicks, 1, 3);
 
         // reset both triggers before setting one to avoid stuck states
         animator.ResetTrigger(PUNCH_1);
@@ -57,14 +58,22 @@ public class CharacterAttack : MonoBehaviour
         if (numberOfClicks == 1)
         {
             animator.SetTrigger(PUNCH_1);
+            CancelInvoke(nameof(ResetCombo)); // cancel previous scheduled reset
+            Invoke(nameof(ResetCombo), comboResetDelay);
         }
         else if (numberOfClicks == 2)
         {
             animator.SetTrigger(PUNCH_2);
+            CancelInvoke(nameof(ResetCombo)); // cancel previous scheduled reset
+            Invoke(nameof(ResetCombo), comboResetDelay);
+        }
+        else
+        {
+            Invoke(nameof(ResetCombo), comboResetDelay);
         }
 
-        CancelInvoke(nameof(ResetCombo)); // cancel previous scheduled reset
-        Invoke(nameof(ResetCombo), comboResetDelay);
+        // CancelInvoke(nameof(ResetCombo)); // cancel previous scheduled reset
+        // Invoke(nameof(ResetCombo), comboResetDelay);
     }
 
     public void ResetCombo()

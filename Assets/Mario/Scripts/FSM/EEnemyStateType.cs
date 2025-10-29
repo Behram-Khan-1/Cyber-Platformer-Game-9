@@ -4,5 +4,6 @@ public enum EnemyStateType
     Patrol,
     Chase,
     Attack,
-    Parried
+    Parried,
+    Death
 }

@@ -261,6 +261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  moneyPrefab: {fileID: 2577024920577778620, guid: ee04645737354194d8cf27ab36e581c0, type: 3}
 --- !u!114 &9153759114752978707
 MonoBehaviour:
   m_ObjectHideFlags: 0
