@@ -3,6 +3,7 @@ using UnityEngine;
 public class CharacterAnimatorManager : MonoBehaviour
 {
     [SerializeField] private Animator animator;
+    [SerializeField] private GameObject bloodEffect;
 
     public void SetBoolTrue(string name)
     {
@@ -27,5 +28,11 @@ public class CharacterAnimatorManager : MonoBehaviour
     {
         animator.SetFloat(name, value);
     }
+
+
+
+
+
+
 
 }

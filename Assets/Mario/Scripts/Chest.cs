@@ -19,6 +19,8 @@ public class Chest : MonoBehaviour, IUsable
     {
         var money = Instantiate(moneyPrefab, spawnPoint.position, Quaternion.identity);
         money.GetComponent<Money>().SetMoneyValue(amountOfMoney);
+        SoundManager.Instance.PlaySound(SoundManager.SoundType.Chest);
+
         //Later add lighting
     }
     public void ChestClosed()

@@ -23,12 +23,16 @@ public class EnemyBase : MonoBehaviour
         {
             tutorialManager.RegisterHit();
         }
-        
+
 
         health -= damageAmount;
+        SoundManager.Instance.PlaySound(SoundManager.SoundType.EnemyHurt);
+
         if (health <= 0)
         {
             GetComponent<EnemyStateManager>().Die();
+            SoundManager.Instance.PlaySound(SoundManager.SoundType.EnemyDeath);
+
         }
     }
 }

@@ -6,7 +6,6 @@ public class UIManager : MonoBehaviour
     public static UIManager instance;
     [SerializeField] private TextMeshProUGUI moneyTextGUI;
     [SerializeField] private TextMeshProUGUI healthTextGUI;
-    [SerializeField] private TextMeshProUGUI heartTextGUI;
 
     void Awake()
     {
@@ -26,8 +25,5 @@ public class UIManager : MonoBehaviour
     {
         healthTextGUI.text = " " + value.ToString();
     }
-    public void HeartUIUpdate(int value)
-    {
-        heartTextGUI.text = " " + value.ToString();
-    }
+
 }

@@ -11,10 +11,18 @@ public class EnemyLineOfSight
 
     public bool CanSeePlayer()
     {
-        if (manager.player == null) return false;
+        if (manager.player == null)
+        {
+            Debug.Log("Player is null");
+            return false;
+        }
 
         float dist = Vector2.Distance(manager.transform.position, manager.player.position);
-        if (dist > manager.detectionRange) return false;
+        if (dist > manager.detectionRange)
+        {
+            Debug.Log("Player out of range");
+            return false;
+        }
 
 
         var playerDir = (manager.player.position - manager.transform.position).normalized;
@@ -28,7 +36,8 @@ public class EnemyLineOfSight
             // Debug.Log("Ray hit: " + hit.collider.name);
             return true;
         }
-
+        
+        Debug.Log("Ray hit: " + hit.collider.name);
         return false;
     }
 

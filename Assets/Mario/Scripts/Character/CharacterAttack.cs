@@ -60,12 +60,14 @@ public class CharacterAttack : MonoBehaviour
             animator.SetTrigger(PUNCH_1);
             CancelInvoke(nameof(ResetCombo)); // cancel previous scheduled reset
             Invoke(nameof(ResetCombo), comboResetDelay);
+            SoundManager.Instance.PlaySound(SoundManager.SoundType.Punch);
         }
         else if (numberOfClicks == 2)
         {
             animator.SetTrigger(PUNCH_2);
             CancelInvoke(nameof(ResetCombo)); // cancel previous scheduled reset
             Invoke(nameof(ResetCombo), comboResetDelay);
+            SoundManager.Instance.PlaySound(SoundManager.SoundType.Punch);
         }
         else
         {

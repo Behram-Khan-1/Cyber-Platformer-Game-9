@@ -15,7 +15,6 @@ public class CharacterBase : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        UIManager.instance.HeartUIUpdate(hearts);
         UIManager.instance.MoneyUIUpdate(money);
         UIManager.instance.HealthUIUpdate(health);
     }

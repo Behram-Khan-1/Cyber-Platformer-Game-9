@@ -3,7 +3,6 @@ using UnityEngine.Events;
 
 public class CharacterMovement : MonoBehaviour
 {
-    [SerializeField] private SpriteRenderer spriteRenderer;
     [Header("Movement")]
     private float inputX;
     [SerializeField] private bool isRunning = false;
@@ -86,15 +85,17 @@ public class CharacterMovement : MonoBehaviour
 
         if (LastXInput != inputX && inputX != 0)
         {
-            LastXInput = inputX;
+            LastXInput = inputX; // for Flipping Character
         }
 
         FlipFace();
 
-        if (inputX != 0)
+        if (inputX != 0) //Animatinos
         {
             animator.SetBoolTrue(IS_MOVING);
             animator.SetFloat(MOVE_X, inputX);
+            if(isGrounded)
+            SoundManager.Instance.PlaySound(SoundManager.SoundType.Movement);
         }
         else
         {
@@ -140,11 +141,12 @@ public class CharacterMovement : MonoBehaviour
                 isGrounded = false;
                 animator.SetBoolFalse(IS_GROUNDED);
                 animator.SetFloat(MOVE_Y, 1);
+                SoundManager.Instance.PlaySound(SoundManager.SoundType.Jump);
 
             }
         }
 
-        if (Input.GetKeyUp("space") && !isGrounded)
+        if (Input.GetKeyUp("space") && !isGrounded) //Variable Jump 
         {
             if (jumpsRemaining > 0)
                 rb.linearVelocity = new Vector2(rb.linearVelocityX, jumpSpeed * 0.75f);
@@ -161,6 +163,7 @@ public class CharacterMovement : MonoBehaviour
             jumpsRemaining = maxJumps;
             isGrounded = true;
             animator.SetBoolTrue(IS_GROUNDED);
+            SoundManager.Instance.PlaySound(SoundManager.SoundType.Landing);
         }
         else
         {

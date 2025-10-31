@@ -23,6 +23,7 @@ public class TutorialNPC : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && isInRange)
         {
             Debug.Log("Press E");
+            SoundManager.Instance.PlaySound(SoundManager.SoundType.Text);
             text.text = dialouges[i];
             i++;
         }

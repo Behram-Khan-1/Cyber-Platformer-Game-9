@@ -20,6 +20,7 @@ public class EnemyChaseState : BaseState<EnemyStateType>
     {
         //Enemy Moveing to player
         //Flip enemy if player is behind it
+        SoundManager.Instance.PlaySound(SoundManager.SoundType.Movement);
 
         Vector2 dir = (manager.player.position - manager.transform.position).normalized;
         manager.transform.position += (Vector3)dir * 2f * Time.deltaTime; // move speed

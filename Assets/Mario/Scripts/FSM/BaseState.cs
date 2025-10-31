@@ -2,7 +2,7 @@
 using System;
 using UnityEngine;
 
-public abstract class BaseState<EState> where EState : Enum //We use EnemyStateType Enum here
+public abstract class BaseState<EState> where EState : Enum //We use EnemyStateType Enum here 
 {
 
     public BaseState(EState Key)

@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.TextCore.Text;
 
 public class EnemyStateDeath : BaseState<EnemyStateType>
 {
@@ -14,10 +15,11 @@ public class EnemyStateDeath : BaseState<EnemyStateType>
         Debug.Log("Manager Death Called");
         manager.animator.SetBool("IsAttacking", false);
         manager.ActiveState = EnemyStateType.Death;
-        
+
         manager.animator.SetTrigger("IsDead");
 
         // Optional: disable collider/movement
+        Camera.main.GetComponent<ScreenEffects>().BloodEffectOn();
         manager.GetComponent<Collider2D>().enabled = false;
         manager.GetComponent<Rigidbody2D>().simulated = false;
     }

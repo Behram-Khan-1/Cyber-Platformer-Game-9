@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-//https://www.youtube.com/watch?v=qsIiFsddGV4&list=PLrXoflRZ7xBuj5wu1V_d9wjjr3JEZjhiN&index=9
+//https://www.youtube.com/watch?v=qsIiFsddGV4&list=PLrXoflRZ7xBuj5wu1V_d9wjjr3JEZjhiN&index=9 
 
 public abstract class StateManagerr<Estate> : MonoBehaviour where Estate : Enum //Also abstract
 {

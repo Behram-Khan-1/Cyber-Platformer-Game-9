@@ -13,12 +13,12 @@ public class EnemyIdleState : BaseState<EnemyStateType> //Every state inherits f
     //Below is implementation of Idle state amnd its methods
     public override void EnterState()
     {
+        Debug.Log("Idle Timer: " + idleTimer);
         if (manager is TutorialFightStateManager tutorialFightManager)
         {
             idleTimer = 100000f; // Stay idle indefinitely during tutorial fight
         }
-        else
-        
+
         // Debug.Log("Entered Idle");
         manager.ActiveState = EnemyStateType.Idle;
         manager.animator.SetBool("IsRunning", false);
@@ -32,7 +32,7 @@ public class EnemyIdleState : BaseState<EnemyStateType> //Every state inherits f
 
     public override void ExitState()
     {
-        // Debug.Log("Exited Idle");
+
     }
 
     //In this method we will setup stuff of how to change state from idle to others.
@@ -41,12 +41,16 @@ public class EnemyIdleState : BaseState<EnemyStateType> //Every state inherits f
 
         if (manager.lineOfSight.IsFacingPlayer())
         {
+            Debug.Log("Is Facing Player");
             if (manager.lineOfSight.CanSeePlayer())
-
+            {
+                Debug.Log("Can see player");
                 return EnemyStateType.Chase;
+            }
         }
         if (manager.lineOfSight.IsPlayerInAttackRange(manager.attackRange))
         {
+            Debug.Log("in range");
             return EnemyStateType.Attack;
         }
 
@@ -59,6 +63,6 @@ public class EnemyIdleState : BaseState<EnemyStateType> //Every state inherits f
 
     public override void OnTriggerEnter(Collider2D collision)
     {
-        throw new System.NotImplementedException();
+
     }
 }

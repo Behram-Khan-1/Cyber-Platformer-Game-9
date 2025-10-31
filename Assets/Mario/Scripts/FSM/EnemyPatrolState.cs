@@ -27,6 +27,7 @@ public class EnemyPatrolState : BaseState<EnemyStateType>
     {
         if (CanMoveNext())
         {
+            // SoundManager.Instance.PlaySound(SoundManager.SoundType.Movement);
             manager.rb.linearVelocity = new Vector2(manager.patrolSpeed * manager.transform.right.x, manager.rb.linearVelocityY);
         }
         else
@@ -70,6 +71,6 @@ public class EnemyPatrolState : BaseState<EnemyStateType>
 
     public override void OnTriggerEnter(Collider2D collision)
     {
-        
+
     }
 }

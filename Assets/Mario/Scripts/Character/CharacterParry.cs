@@ -9,13 +9,13 @@ public class CharacterParry : MonoBehaviour
     [SerializeField] float parryCooldown = 1f;
     public float StunDuration = 1f;
     [SerializeField] float parryResetTimer;
-    [SerializeField] float parryTimer;
+    [SerializeField] float parryWindowTimer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         animator = GetComponent<CharacterAnimatorManager>();
         parryResetTimer = parryCooldown;
-        parryTimer = parryWindow;
+        parryWindowTimer = parryWindow;
     }
 
     // Update is called once per frame
@@ -29,7 +29,7 @@ public class CharacterParry : MonoBehaviour
         if (isParrying == true)
         {
             parryResetTimer = parryResetTimer - Time.deltaTime;
-            parryTimer = parryTimer - Time.deltaTime;
+            parryWindowTimer = parryWindowTimer - Time.deltaTime;
         }
 
         if (parryResetTimer <= 0)
@@ -41,17 +41,18 @@ public class CharacterParry : MonoBehaviour
         {
             isParrying = true;
             parryResetTimer = parryCooldown;
-            parryTimer = parryWindow;
+            parryWindowTimer = parryWindow;
             animator.SetTrigger("Parry");
+            SoundManager.Instance.PlaySound(SoundManager.SoundType.Parry);
         }
     }
 
     public bool TryParrying()
     {
-        if (parryTimer >= 0 && isParrying)
+        if (parryWindowTimer >= 0 && isParrying)
         {
             Debug.Log("Parried");
-            parryTimer = parryWindow;
+            parryWindowTimer = parryWindow;
             isParrying = false;
             return true;
         }
